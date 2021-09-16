@@ -6,7 +6,7 @@
      <meta http-equiv="X-UA-Compatible" content="IE=edge">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <link rel="stylesheet" href="styles.css">
-     <link rel="stylesheet" href="boostrap/css/bootstrap.min.css">
+     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
      <script type="languaje/js" src="main.js"></script>
      <title></title>
 </head>
@@ -57,8 +57,6 @@
                break;
      }
 
-
-
      ?>
 
      <table class="table table-striped">
@@ -87,8 +85,6 @@
           </tbody>
 
      </table>
-
-
 
 </body>
 
