@@ -9,13 +9,6 @@ function cicloFor() {
      */
 }
 
-/*  
-1:cuotaInicial debe ser el 30% del valor total del préstamo
-2: saldoPrestamo debe ser el 70% del ValorPrestamo + 11.2% anual
-3:  Generar el ValorCouta, de una lista desplegarle el total de cuotas a pagar, sabiendo que las cuotas deben ser a 6, 12, 18, 24, 36, 48 o máximo 60 meses.
-
-
-*/
 
 function validar() {
     var o = document.getElementById('cuotas').value;

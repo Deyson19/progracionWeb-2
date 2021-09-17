@@ -30,7 +30,7 @@
         <form name="formCuotas" method="POST" action="data.php" class="container" onKeypress="if(event.keyCode == 13) event.returnValue = false;">
             <div class="form-group">
                 <div class="form-group">
-                    <label for="valorPrestar">Ingresar valor a presatar:</label>
+                    <label for="valorPrestar">Ingresar la cantidad que deseas prestar:</label>
                     <input type="text" class="form-control" name="cantidadPrestamo" onkeypress="pulsar()">
                 </div>
                 <div class="form-group">
