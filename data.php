@@ -14,6 +14,7 @@
 <body>
 
      <?php
+     #region Variables a utilizar
      //Variables
      $valorPrestamo  = 0;
      $cuotaInicial       = 0;
@@ -22,23 +23,24 @@
      $valorCuota         = 0;
      $cantidadMeses = 0;
      $recorrido          = 0;
+     #endregion
+
      #region Captura de datos
 
      //campo cantidad de dinero
      $cantidadPrestamo = ($_POST["cantidadPrestamo"]);
      $valorPrestamo = $cantidadPrestamo;
 
-     /*  
+   /*  
 1:cuotaInicial debe ser el 30% del valor total del préstamo
 2: saldoPrestamo debe ser el 70% del ValorPrestamo + 11.2% anual
 3:  Generar el ValorCouta, de una lista desplegarle el total de cuotas a pagar, sabiendo que las cuotas deben ser a 6, 12, 18, 24, 36, 48 o máximo 60 meses.
-*/
-
-     //Capturar select
+*/    
+ //Capturar select
      $cuotasSeleccionadas = ($_POST["cuotas"]);
      #endregion
 
-     #region Capturar el valor seleccionado en la lista
+     #region Capturar el valor seleccionado en la lista "var = cantidadMeses"
      switch ($cuotasSeleccionadas) {
           case 1:
                $cantidadMeses = 6;
@@ -75,6 +77,7 @@
                $diaMes = "Debes pagar el: " . 25 . " de ";
                $months = [" ", "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre", "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre", "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre", "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre", "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
 
+               #region codigo de C#
                /* int conversion = Convert.ToInt32(campoPrestamo.Numero);
             cuotaInicial = (campoPrestamo.Prestamo) * 0.3; //30% ok
             float y =  (11.2f/100) / 12;
@@ -82,23 +85,27 @@
             saldoPrestamo = ((cuotaInicial + (cuotaInicial * 0.11)) / 12);
             valorCuota = totalAPagarSegundoMes * conversion; //0.04
             */
+               #endregion
 
                $cuotaInicial = ($cantidadPrestamo) * 0.3;
-               
+
                $totalPagar2doMes = ($cantidadPrestamo - $cuotaInicial) / $cantidadMeses - 1;
                $pago2doMes = round($totalPagar2doMes, 0); //redondear número
-               
+
                $saldoPrestamo = (($cuotaInicial + ($cuotaInicial * 0.11)) / 12);
-               
+
                $valorCuota = $totalPagar2doMes * $cantidadMeses;
-               
+
                $subTotal = $valorCuota - ($cuotaInicial - $pago2doMes);
-               
+
                #region Imprimir calculos (ya solo los necesito en la tabla)
-              /*  echo "Cuota inicial: " . $cuotaInicial . "\n";
+               echo "Cantidad solicitada: ".$cantidadPrestamo;
+               echo "\n Cuota inicial: " . $cuotaInicial . "\n";
                echo "<br> Pagar a partir del segundo mes: " . $pago2doMes . ' pesos';
                echo "<br> Valor cuota: " . $valorCuota;
-               echo "<br> Saldo prestamo: " . $saldoPrestamo; */
+               echo "<br> Saldo prestamo: " . $saldoPrestamo;
+               echo " 'subtotal =>' . $subTotal ";
+
                #endregion
                ?>
                <thead>
@@ -114,7 +121,7 @@
                          <td>1</td>
                          <td><?php echo $diaMes . " " . $months[1] ?></td>
                          <td> <?php echo $cuotaInicial; ?></td>
-                         <td> <?php echo $cuotaInicial-$pago2doMes ?></td>
+                         <td> <?php echo $cuotaInicial - round($totalPagar2doMes,0) ?></td>
                     </tr>
                     <?php
 
@@ -128,6 +135,7 @@
                          echo "<td> $subTotal </td>"; //subtotal pagado
                          print "</tr>";
                     }
+                    
                     ?>
 
                </tbody>
