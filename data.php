@@ -87,7 +87,8 @@
             */
                #endregion
 
-               $cuotaInicial = ($cantidadPrestamo) * 0.3;
+               $cuotaInicial = $cantidadPrestamo-(($cantidadPrestamo) * 0.3);
+               echo "\n Imprimir el 30%";//350000 si son 500000
 
                $totalPagar2doMes = ($cantidadPrestamo - $cuotaInicial) / $cantidadMeses - 1;
                $pago2doMes = round($totalPagar2doMes, 0); //redondear número
