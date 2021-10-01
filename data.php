@@ -31,12 +31,12 @@
      $cantidadPrestamo = ($_POST["cantidadPrestamo"]);
      $valorPrestamo = $cantidadPrestamo;
 
-   /*  
+     /*  
 1:cuotaInicial debe ser el 30% del valor total del préstamo
 2: saldoPrestamo debe ser el 70% del ValorPrestamo + 11.2% anual
 3:  Generar el ValorCouta, de una lista desplegarle el total de cuotas a pagar, sabiendo que las cuotas deben ser a 6, 12, 18, 24, 36, 48 o máximo 60 meses.
-*/    
- //Capturar select
+*/
+     //Capturar select
      $cuotasSeleccionadas = ($_POST["cuotas"]);
      #endregion
 
@@ -87,25 +87,28 @@
             */
                #endregion
 
-               $cuotaInicial = $cantidadPrestamo-(($cantidadPrestamo) * 0.3);
-               echo "\n Imprimir el 30%";//350000 si son 500000
+               $cuotaInicial = ($cantidadPrestamo) * 0.3;
+               //echo "\n Imprimir el 30% " . "<br>"; //150000 si son 500000 => 70% = 350000
 
-               $totalPagar2doMes = ($cantidadPrestamo - $cuotaInicial) / $cantidadMeses - 1;
+               //calcular el 70 %
+               $value70 = ($cantidadPrestamo - $cuotaInicial);
+               $saldoPrestamo = $value70 + (($value70) * 0.112);
+
+               $totalPagar2doMes = ($saldoPrestamo) / $cantidadMeses;
                $pago2doMes = round($totalPagar2doMes, 0); //redondear número
+               //echo "Pagar: " . $pago2doMes;
 
-               $saldoPrestamo = (($cuotaInicial + ($cuotaInicial * 0.11)) / 12);
+               $valorCuota = $pago2doMes;
 
-               $valorCuota = $totalPagar2doMes * $cantidadMeses;
-
-               $subTotal = $valorCuota - ($cuotaInicial - $pago2doMes);
+               $subTotal = round($saldoPrestamo - $totalPagar2doMes, 0);
 
                #region Imprimir calculos (ya solo los necesito en la tabla)
-               echo "Cantidad solicitada: ".$cantidadPrestamo;
+               /* echo "<br> Cantidad solicitada: " . $cantidadPrestamo . "<br>";
                echo "\n Cuota inicial: " . $cuotaInicial . "\n";
                echo "<br> Pagar a partir del segundo mes: " . $pago2doMes . ' pesos';
-               echo "<br> Valor cuota: " . $valorCuota;
+               echo "<br> Valor cuota: +(11.2%) " . $valorCuota;
                echo "<br> Saldo prestamo: " . $saldoPrestamo;
-               echo " 'subtotal =>' . $subTotal ";
+               echo "<br> Subtotal . $subTotal "; */
 
                #endregion
                ?>
@@ -119,45 +122,40 @@
                </thead>
                <tbody>
                     <tr>
+                         <?php 
+                         #region Variable con formato
+                         $saldoPrestamoFormat = sprintf("%1\$.2f",$saldoPrestamo);
+                         $cuotaInicialFormat = sprintf("%1\$.2f",$cuotaInicial);
+
+                         $pago2doMesFormat = sprintf("%1\$.2f",$pago2doMes);
+                         #endregion
+                         ?>
                          <td>1</td>
                          <td><?php echo $diaMes . " " . $months[1] ?></td>
-                         <td> <?php echo $cuotaInicial; ?></td>
-                         <td> <?php echo $cuotaInicial - round($totalPagar2doMes,0) ?></td>
+                         <td> <?php echo $cuotaInicialFormat ." $"; ?></td>
+                         <td> <?php echo $saldoPrestamoFormat ." $"; ?></td>
                     </tr>
                     <?php
-
+                    $b = 0;
                     for ($i = 2; $i < $cantidadMeses + 1; $i++) {
+                         $saldoPrestamo -= $valorCuota;
+                         $b = $saldoPrestamo;
+                         $bFormato = sprintf("%1\$.2f",$b);
                          print "<tr>";
                          echo "<td>";
                          echo $i . " ";
                          echo "</td>";
                          echo "<td>" . $diaMes . " " . $months[$i] . "</td>"; //fecha de pago
-                         echo "<td>   $pago2doMes  </td>"; //valor cuota
-                         echo "<td> $subTotal </td>"; //subtotal pagado
+                         echo "<td>   $pago2doMesFormat $  </td>"; //valor cuota
+                         echo "<td> $bFormato $ </td>"; //subtotal pagado
                          print "</tr>";
                     }
-                    
+
                     ?>
 
                </tbody>
 
           </table>
-
-          <?php
-          class CalcularFecha
-          {
-               public static function calculandoFecha()
-               {
-                    $i = new DateInterval('P30D');
-                    $d1 = new Datetime();
-                    $p = new DatePeriod($d1, $i, 5);
-
-                    foreach ($p as $d) {
-                         echo "<br>" . $d->format('Y-m-d') . "\n";
-                    }
-               }
-          }
-          ?>
      </div>
 
 </body>
