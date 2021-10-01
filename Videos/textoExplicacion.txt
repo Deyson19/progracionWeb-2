@@ -1,0 +1,4 @@
+subo este archivo de texto plano en estas 3 carpetas para que se cumpla lo que piden en la guía.
+Al subir la carpeta principal ignoraba estas 3 carpetas porque estaban vacías.
+
+Muchas gracias.
