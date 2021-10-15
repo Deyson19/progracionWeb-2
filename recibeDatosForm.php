@@ -17,7 +17,7 @@ remember=on
 */
 #endregion
 
-
+#region Recepción datos de los campos
 //recibe los datos del formulario
 $dni = $_POST["numeroDni"];
 $tipoDni = $_POST["selectTipoDni"];
@@ -31,7 +31,7 @@ $ciudadResidencia = $_POST["ciudadResidencia"];
 $estadoCivil = $_POST["selectEstadoCivil"];
 $correo = $_POST["emailCliente"];
 $acepta = $_POST["remember"];
-
+#endregion
 
 foreach ($_POST as $key => $value) {
      echo "<br>".$key.": \n";

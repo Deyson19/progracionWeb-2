@@ -1,15 +1,3 @@
-var arreglo = [];
-
-function cicloFor() {
-    /* 
-        var arrelgo = [1, 2];
-        for (let index = 0; index < arrelgo.length; index++) {
-            document.write("<h1> Hola " + arrelgo[index] + "</h1>");
-        }
-     */
-}
-
-
 function validar() {
     var o = document.getElementById('cuotas').value;
     if (o === '0') {
