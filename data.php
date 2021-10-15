@@ -54,10 +54,10 @@
 
      echo $docBreviado;
 
-     foreach ($_POST as $key => $value) {
-          echo "<br>" . $key . ": \n";
-          echo $value . ":";
-     }
+     // foreach ($_POST as $key => $value) {
+     //      echo "<br>" . $key . ": \n";
+     //      echo $value . ":";
+     // }
      ?>
 
 
