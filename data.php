@@ -52,12 +52,6 @@
                break;
      }
 
-     echo $docBreviado;
-
-     // foreach ($_POST as $key => $value) {
-     //      echo "<br>" . $key . ": \n";
-     //      echo $value . ":";
-     // }
      ?>
 
 
@@ -160,7 +154,7 @@
                <tbody>
                     <tr>
                     <td class="text-center text-capitalize text-muted"><?php echo $numCelular ;?></td>
-                    <td class="text-center text-capitalize text-muted"><?php echo $correo ;?></td>
+                    <td class="text-center  text-muted"><?php echo $correo ;?></td>
                     <td class="text-center text-capitalize text-muted"><?php echo $deptoResidencia ;?></td>
                     <td class="text-center text-capitalize text-muted"><?php echo $ciudadResidencia ;?></td>
                     <td class="text-center text-capitalize text-muted"><?php echo $direccionResidencia ;?></td>
@@ -216,14 +210,16 @@
                     $b = 0;
                     for ($i = 2; $i < $cantidadMeses + 1; $i++) {
                          $saldoPrestamo -= $valorCuota;
+                         $c=0;
                          $b = $saldoPrestamo;
                          $bFormato = sprintf("%1\$.2f", $b);
+                         $c = $b - $pago2doMesFormat;
                          print "<tr>";
                          echo "<td>";
                          echo $i . " ";
                          echo "</td>";
                          echo "<td>" . $diaMes . " " . $months[$i] . "</td>"; //fecha de pago
-                         echo "<td>   $pago2doMesFormat $  </td>"; //valor cuota
+                         echo "<td>   $valorCuota $  </td>"; //valor cuota
                          echo "<td> $bFormato $ </td>"; //subtotal pagado
                          print "</tr>";
                     }
