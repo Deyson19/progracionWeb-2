@@ -9,13 +9,12 @@
      <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
      <script type="languaje/js" src="main.js"></script>
      <title>Consulta Transferencia</title>
-     
+
 </head>
 
 <body>
 
      <?php
-
      #region Recepción datos de los campos
      //recibe los datos del formulario
      $dni = $_POST["numeroDni"];
@@ -32,23 +31,24 @@
      $acepta = $_POST["remember"];
      #endregion
 
+     $docAbreviado = null;
+
      //Voy a ver que tipo de documento escogio
-     $docBreviado = null;
      switch ($tipoDni) {
           case 'Cédula':
-               $docBreviado = "CC";
+               $docAbreviado = "CC";
                break;
           case 'Pasaporte':
-               $docBreviado = "P";
+               $docAbreviado = "P";
                break;
           case 'Cédula extranjería':
-               $docBreviado = "CE";
+               $docAbreviado = "CE";
                break;
           case 'Tarjeta de Identidad':
-               $docBreviado = "TI";
+               $docAbreviado = "TI";
                break;
           default:
-               $docBreviado = null;
+               $docAbreviado = null;
                break;
      }
 
@@ -73,44 +73,10 @@
      $cantidadPrestamo = ($_POST["cantidadPrestamo"]);
      $valorPrestamo = $cantidadPrestamo;
 
-     /*
-1:cuotaInicial debe ser el 30% del valor total del préstamo
-2: saldoPrestamo debe ser el 70% del ValorPrestamo + 11.2% anual
-3:  Generar el ValorCouta, de una lista desplegarle el total de cuotas a pagar, sabiendo que las cuotas deben ser a 6, 12, 18, 24, 36, 48 o máximo 60 meses.
-*/
      //Capturar select
      $cuotasSeleccionadas = ($_POST["cuotas"]);
      #endregion
 
-     #region Capturar el valor seleccionado en la lista "var = cantidadMeses"
-     /*switch ($cuotasSeleccionadas) {
-          case 1:
-               $cantidadMeses = 6;
-               break;
-          case 2:
-               $cantidadMeses = 12;
-               break;
-          case 3:
-               $cantidadMeses = 18;
-               break;
-          case 4:
-               $cantidadMeses = 24;
-               break;
-          case 5:
-               $cantidadMeses = 36;
-               break;
-          case 6:
-               $cantidadMeses = 48;
-               break;
-          case 7:
-               $cantidadMeses = 60;
-               break;
-
-          default:
-               echo "No es posible calcular los datos";
-               break;
-     }*/
-     #endregion
      $cantidadMeses = $cuotasSeleccionadas;
      ?>
 
@@ -130,12 +96,12 @@
                </thead>
                <tbody>
                     <tr>
-                         <td class="text-center text-capitalize text-muted"><?php echo $nombres ;?></td>
-                         <td class="text-center text-capitalize text-muted"><?php echo $apellidos ;?></td>
-                         <td class="text-center text-capitalize text-muted"><?php echo $fechaNacimiento ;?></td>
-                         <td class="text-center text-capitalize text-muted"><?php echo $estadoCivil ;?></td>
-                         <td class="text-center text-capitalize text-muted"><?php echo $docBreviado ;?></td>
-                         <td class="text-center text-capitalize text-muted"><?php echo $dni ;?></td>
+                         <td class="text-center text-capitalize text-muted"><?php echo $nombres; ?></td>
+                         <td class="text-center text-capitalize text-muted"><?php echo $apellidos; ?></td>
+                         <td class="text-center text-capitalize text-muted"><?php echo $fechaNacimiento; ?></td>
+                         <td class="text-center text-capitalize text-muted"><?php echo $estadoCivil; ?></td>
+                         <td class="text-center text-capitalize text-muted"><?php echo $docAbreviado; ?></td>
+                         <td class="text-center text-capitalize text-muted"><?php echo $dni; ?></td>
                     </tr>
                </tbody>
           </table>
@@ -153,11 +119,11 @@
                </thead>
                <tbody>
                     <tr>
-                    <td class="text-center text-capitalize text-muted"><?php echo $numCelular ;?></td>
-                    <td class="text-center  text-muted"><?php echo $correo ;?></td>
-                    <td class="text-center text-capitalize text-muted"><?php echo $deptoResidencia ;?></td>
-                    <td class="text-center text-capitalize text-muted"><?php echo $ciudadResidencia ;?></td>
-                    <td class="text-center text-capitalize text-muted"><?php echo $direccionResidencia ;?></td>
+                         <td class="text-center text-capitalize text-muted"><?php echo $numCelular; ?></td>
+                         <td class="text-center  text-muted"><?php echo $correo; ?></td>
+                         <td class="text-center text-capitalize text-muted"><?php echo $deptoResidencia; ?></td>
+                         <td class="text-center text-capitalize text-muted"><?php echo $ciudadResidencia; ?></td>
+                         <td class="text-center text-capitalize text-muted"><?php echo $direccionResidencia; ?></td>
                     </tr>
                </tbody>
           </table>
@@ -210,7 +176,7 @@
                     $b = 0;
                     for ($i = 2; $i < $cantidadMeses + 1; $i++) {
                          $saldoPrestamo -= $valorCuota;
-                         $c=0;
+                         $c = 0;
                          $b = $saldoPrestamo;
                          $bFormato = sprintf("%1\$.2f", $b);
                          $c = $b - $pago2doMesFormat;
@@ -230,6 +196,40 @@
 
           </table>
      </div>
+
+     <?php
+
+     include("data/db.php");
+
+     $fechaPago = $diaMes . " " . $months[1];
+     try {
+          $query = "INSERT INTO `cliente` (`dni`, `tipoDni`, `nombres`, `apellidos`, `fechaNacimiento`, `numeroCelular`, `direccion`, `deptoResidencia`, `ciudad`, `estadoCivil`, `correo`, `cantidadPrestamo`, `cantidadMeses`, `fechaPago`, `valorCuota`, `subTotal`, `fechaRegistro`) 
+          VALUES ('$dni', '$docAbreviado', '$nombres', '$apellidos', '$fechaNacimiento', '$numCelular', '$direccionResidencia', '$deptoResidencia', '$ciudadResidencia', '$estadoCivil', '$correo', '$cantidadPrestamo', '$cantidadMeses', '$fechaPago', '$valorCuota', '$subTotal', current_timestamp())";
+     $result = mysqli_query($conn, $query);
+     if (!$result) {
+          die("No se realizó el registro principal");
+          die();
+          echo "Error" . mysqli_error($conn);
+          $conn->close();
+     }else{
+          echo "<script> window.location('index.php') </script>";
+     }
+     } catch (\Throwable $th) {
+          foreach ($_POST as $key => $value) {
+               echo $key;
+               echo $value;
+          }
+          echo $th;
+     }
+
+
+     ?>
+
+     <?php
+     
+     
+     
+     ?>
 
 </body>
 

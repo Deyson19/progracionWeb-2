@@ -1,42 +1,13 @@
-           <!DOCTYPE html>
-           <html lang="es">
+<?php include("includes/header.php"); ?>
 
-           <head>
-               <meta charset="UTF-8">
-               <meta http-equiv="X-UA-Compatible" content="IE=edge">
-               <meta name="viewport" content="width=device-width, initial-scale=1.0">
-               <link rel="stylesheet" href="styles.css">
-               <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-               <script src="main.js"></script>
-               <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
-
-               <title>Banco MySavings</title>
-
-           </head>
-
-           <body>
-               <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-                   <!-- Logo de la web -->
-                   <a class="navbar-brand" href="#">
-                       <img src="Imagenes/logo_transparent.png" alt="Logo_empresa" style="width: 80px;">
-                   </a>
-
-                   <ul class="navbar-nav">
-                       <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-                       <li class="nav-item"><a class="nav-link" href="#">Servicios</a></li>
-                       <li class="nav-item"><a class="nav-link" href="#">Contactar</a></li>
-                       <li class="nav-item"><a class="nav-link" href="#">Registrarse</a></li>
-                   </ul>
-               </nav>
-
-               <div class="container">
+               <div class="container p-4">
                    <h1 class="text-info text-center">Formulario para enviar información</h1>
                    <form name="formCuotas" method="POST" action="data.php" class="needs-validation" novalidate onKeypress="if(event.keyCode == 13) event.returnValue = false;">
                        <?php
                         #region Realizar selects
-                        include("PersonalData.php");
-                        $tipoDni = array_reverse(array("Cédula", "Pasaporte", "Cédula extranjería", "Tarjeta de Identidad"));
-                        $estadoCivil = array_reverse(array("Soltero", "Casado", "Separado"));
+                        include("includes/personalData.php");
+                        $tipoDni = array_reverse(array("","Cédula", "Pasaporte", "Cédula extranjería", "Tarjeta de Identidad"));
+                        $estadoCivil = array_reverse(array("","Soltero", "Casado", "Separado"));
                         $cantidadCuotas = [0, 6, 12, 18, 24, 36, 48, 60];
                         $personalData = new DatosPersonales();
                         #endregion
@@ -58,7 +29,7 @@
                            </div>
                            <div class="form-group">
                                <label for="dni">Documento de identidad:</label>
-                               <input type="text" class="form-control" id="dni" placeholder="Ingresa tu documento" name="numeroDni" required>
+                               <input type="text" class="form-control" id="dni" placeholder="Ingresa tu documento" name="numeroDni" required maxlength="10" minlength="7">
                                <div class="valid-feedback">Campo completado</div>
                                <div class="invalid-feedback">Por favor llena este campo.</div>
                            </div>
@@ -90,7 +61,7 @@
                            </div>
                            <div class="form-group">
                                <label for="numCel">Ingresa Número celular:</label>
-                               <input type="tel" class="form-control" id="numCel" placeholder="Número celular" name="numeroCelular" required>
+                               <input type="tel" class="form-control" id="numCel" placeholder="Número celular" name="numeroCelular" required minlength="7">
                                <div class="valid-feedback">Campo completado</div>
                                <div class="invalid-feedback">Por favor llena este campo.</div>
                            </div>
@@ -134,15 +105,12 @@
                                </label>
                            </div>
 
-                           <button type="submit" class="btn btn-primary">Enviar datos</button>
+                           <button type="submit" class="btn btn-primary" name="save_client">Enviar datos</button>
                            <button type="reset" class="btn btn-danger">Limpiar campos</button>
                    </form>
                </div>
 
-               <footer>
-                   <?php include('footer.php');
-                    ?>
-               </footer>
+               <?php include("includes/footer.php"); ?>
            </body>
            <script>
                // Disable form submissions if there are invalid fields
@@ -163,16 +131,6 @@
                        });
                    }, false);
                })();
-           </script>
+               
 
-           <script src="boostrap/js/jquery.min.js">
-               //jquery
-           </script>
-           <script src="boostrap/js/popper.min.js">
-               //Popper
-           </script>
-           <script src="boostrap/js/bootstrap.min.js">
-               //Boostrap
-           </script>
-
-           </html>
+           
