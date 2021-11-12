@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -10,6 +12,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
     <link href="../fontAwesome/all.css" rel="stylesheet">
     <script src="main.js"></script>
+    <script src="sweetalert2.all.min.js"></script>
+
     
 
     <title>Bienvenidos a Banco MySavings</title>

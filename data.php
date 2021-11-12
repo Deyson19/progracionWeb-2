@@ -201,25 +201,24 @@
 
      include("data/db.php");
 
-     $fechaPago = $diaMes . " " . $months[1];
-     try {
-          $query = "INSERT INTO `cliente` (`dni`, `tipoDni`, `nombres`, `apellidos`, `fechaNacimiento`, `numeroCelular`, `direccion`, `deptoResidencia`, `ciudad`, `estadoCivil`, `correo`, `cantidadPrestamo`, `cantidadMeses`, `fechaPago`, `valorCuota`, `subTotal`, `fechaRegistro`) 
+     if (isset($_POST['save_client'])) {
+
+          $fechaPago = $diaMes . " " . $months[1];
+
+          try {
+               $query = "INSERT INTO `cliente` (`dni`, `tipoDni`, `nombres`, `apellidos`, `fechaNacimiento`, `numeroCelular`, `direccion`, `deptoResidencia`, `ciudad`, `estadoCivil`, `correo`, `cantidadPrestamo`, `cantidadMeses`, `fechaPago`, `valorCuota`, `subTotal`, `fechaRegistro`) 
           VALUES ('$dni', '$docAbreviado', '$nombres', '$apellidos', '$fechaNacimiento', '$numCelular', '$direccionResidencia', '$deptoResidencia', '$ciudadResidencia', '$estadoCivil', '$correo', '$cantidadPrestamo', '$cantidadMeses', '$fechaPago', '$valorCuota', '$subTotal', current_timestamp())";
-     $result = mysqli_query($conn, $query);
-     if (!$result) {
-          die("No se realizó el registro principal");
-          die();
-          echo "Error" . mysqli_error($conn);
-          $conn->close();
-     }else{
-          echo "<script> window.location('index.php') </script>";
-     }
-     } catch (\Throwable $th) {
-          foreach ($_POST as $key => $value) {
-               echo $key;
-               echo $value;
+               $result = mysqli_query($conn, $query);
+
+               if (!$result) {
+                    die("No se realizó el registro principal");
+                    echo "Error" . mysqli_error($conn);
+               }
+               
+          } catch (\Throwable $th) {
+               echo $th;
           }
-          echo $th;
+          $conn->close();
      }
 
 
@@ -228,7 +227,8 @@
      <?php
      
      
-     
+
+
      ?>
 
 </body>

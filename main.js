@@ -32,3 +32,4 @@ function disableEnterKey(e) {
         return true;
     }
 }
+
