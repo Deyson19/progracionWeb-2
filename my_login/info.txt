@@ -1,0 +1,4 @@
+esta plantilla no es propiedad de Deyson Vente,
+fue tomada de un sitio de internet y le realizó ajustes.
+
+Tomado de: https://www.baulphp.com/login-seguro-php-con-mysqli-descargar/

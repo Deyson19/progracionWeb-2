@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
     <link href="../fontAwesome/all.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
     <script src="main.js"></script>
     <script src="sweetalert2.all.min.js"></script>
 
@@ -31,9 +32,9 @@
             <li class="nav-item"><a class="nav-link" href="#">Home<i class="fas fa-home"></i></a></li>
             <li class="nav-item"><a class="nav-link" href="#">Servicios</a></li>
             <li class="nav-item"><a class="nav-link" href="#">Contactar<i class="fas fa-envelope"></i></a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Registrarse<i class="fas fa-user-circle"></i></a></li>
+            <li class="nav-item"><a class="nav-link" href="my_login/register.php">Registrarse<i class="fas fa-user-circle"></i></a></li>
             <li class="nav-item">
-                <a href="" id="btn_to_login" class="btn btn-primary">
+                <a href="my_login" id="btn_to_login" class="btn btn-primary">
                 <i class="fas fa-sign-in-alt"></i>Entrar
                 </a>
             </li>
