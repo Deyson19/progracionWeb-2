@@ -109,6 +109,9 @@
 <script src="../fontAwesome/js/all.js">
      //FontAwesome
 </script>
+<script src="/fontAwesome/fontawesome.min.js">
+     //FontAwesome
+</script>
 <script src="sweetalert2.all.min.js"></script>
 
 </body>

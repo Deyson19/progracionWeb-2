@@ -42,19 +42,18 @@
 					<input id="email" name="email" type="email" class="form-control" placeholder="Correo electrónico">  
 					<span class="help-block"></span>
 				</div>
-				<button class="btn btn-block bt-login" type="submit" id="submit_btn" data-loading-text="Restableciendo contraseña....">Restablecer Contraseña</button>
+				<button class="btn btn-block btn-success" type="submit" id="submit_btn" data-loading-text="Restableciendo contraseña....">Restablecer Contraseña</button>
 			</form>
 			<div class="form-footer">
 				<div class="row">
 					<div class="col-xs-6 col-sm-6 col-md-6">
+						<a href="index.php" class="btn btn-info">
 						<i class="fa fa-lock"></i>
-						<a href="index.php">  Iniciar sesión  </a>
-					
+						Iniciar sesión  </a>
 					</div>
-					
 					<div class="col-xs-6 col-sm-6 col-md-6">
-						<i class="fa fa-check"></i>
-						<a href="register.php"> Registrarse </a>
+						<a href="register.php" class="btn btn-warning"> 
+						<i class="fa fa-check"></i>Registrarse </a>
 					</div>
 				</div>
 			</div>

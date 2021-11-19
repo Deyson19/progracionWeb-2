@@ -1,5 +1,5 @@
 body {
-	background: #eee !important;	
+	background: #107e6f !important;	
 }
 
 .login-form{
@@ -15,7 +15,7 @@ body {
 }
 
 .form-header,.form-footer{
-	background-color: rgba(255, 255, 255, .8);
+	background-color: rgba(111, 173, 192, 0.8);
   	border: 1px solid rgba(0,0,0,0.1);
 }
 
@@ -42,7 +42,8 @@ body {
 }
 .form-header i{font-size:60px;}
 .form-footer {
-	padding: 15px 40px;	
+	padding: 15px 40px;
+  text-align: center;	
 }
 .form-signin-heading{
 	margin-bottom: 30px;
@@ -87,6 +88,10 @@ body {
 }
 i{margin-right: 4%;}
 a{text-decoration: none;color:#333;}
+
+.form-footer a{
+  color: #333;
+}
 
 .has-error{color:#ff0000 !important;}
 .has-success{color:#78b310 !important;}

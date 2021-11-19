@@ -1,21 +1,4 @@
 <?php
-#region Parametros
-//recibido por el get
-/*
-numeroDni=897979
-selectTipoDni=Cédula
-nombresCliente=Santos
-apellidosCliente=Guill
-fechaNacimiento=2021-09-27
-numeroCelular=79696969
-direccionCasa=Calle+34+-+uh
-deptoResidencia=Valle+
-ciudadResidencia=Cali
-selectEstadoCivil=Soltero
-emailCliente=santos-guill08%40gmail.com
-remember=on
-*/
-#endregion
 
 #region Recepción datos de los campos
 //recibe los datos del formulario

@@ -63,19 +63,20 @@
 					<input name="confirm_password" id="confirm_password" type="password" class="form-control" placeholder="Confirmar Contraseña"> 
 					<span class="help-block"></span>
 				</div>
-				<button class="btn btn-block bt-login" type="submit" id="submit_btn" data-loading-text="Registrando....">Registrarse</button>
+				<button class="btn btn-block btn-success" type="submit" id="submit_btn" data-loading-text="Registrando....">Registrarse</button>
 			</form>
 			<div class="form-footer">
 				<div class="row">
 					<div class="col-xs-6 col-sm-6 col-md-6">
-						<i class="fa fa-lock"></i>
-						<a href="forget_password.php"> Olvidó su contraseña? </a>
+						<a href="forget_password.php" class="btn btn-warning"> 
+						<i class="fa fa-lock"></i>¿Olvidó su contraseña? </a>
 					
 					</div>
 					
 					<div class="col-xs-6 col-sm-6 col-md-6">
+						<a href="index.php" class="btn btn-info">
 						<i class="fa fa-check"></i>
-						<a href="index.php">  Iniciar sesión  </a>
+						Iniciar sesión  </a>
 					</div>
 				</div>
 			</div>

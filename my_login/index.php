@@ -21,7 +21,7 @@ require_once 'config.php';
 	}
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -54,19 +54,20 @@ require_once 'config.php';
 			<form id="login-form" method="post" class="form-signin" role="form" action="<?php echo $_SERVER['PHP_SELF']; ?>">
 				<input name="email" id="email" type="email" class="form-control" placeholder="Correo electrónico" autofocus> 
 				<input name="password" id="password" type="password" class="form-control" placeholder="Contraseña"> 
-				<button class="btn btn-block bt-login" type="submit" id="submit_btn" data-loading-text="Iniciando....">Iniciar sesión</button>
+				<button class="btn btn-block btn-success" type="submit" id="submit_btn" data-loading-text="Iniciando....">Iniciar Sesión</button>
 			</form>
 			<div class="form-footer">
 				<div class="row">
 					<div class="col-xs-6 col-sm-6 col-md-6">
+						<a href="forget_password.php" class="btn btn-warning">
 						<i class="fa fa-lock"></i>
-						<a href="forget_password.php"> Olvidó su contraseña? </a>
-					
+						¿Olvidó su contraseña? 
+					</a>
 					</div>
-					
 					<div class="col-xs-6 col-sm-6 col-md-6">
-						<i class="fa fa-check"></i>
-						<a href="register.php"> Registrarse </a>
+						<a href="register.php" class="btn btn-info"> 
+						<i class="fa fa-check"></i>Registrarse 
+						</a>
 					</div>
 				</div>
 			</div>

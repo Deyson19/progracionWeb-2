@@ -1,5 +1,3 @@
-
-
 <?php include("includes/header.php"); ?>
 
 <div class="container p-4">
@@ -117,17 +115,20 @@
             </div>
 
             <button type="submit" class="btn btn-primary" name="save_client">Enviar datos</button>
-            <button type="reset" class="btn btn-danger" onclick="pruebaSal()">Limpiar campos</button>
+            <button type="reset" class="btn btn-danger" onclick="limpiaCampos()">Limpiar campos</button>
     </form>
 </div>
 <script>
-    function pruebaSal() {
-    Swal.fire(
-        'The Internet?',
-        'That thing is still around?',
-        'question'
-      )
-}
+    function limpiaCampos() {
+        Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Se han limpiado los campos',
+            showConfirmButton: true,
+            timer: 3800
+        })        
+    }
+
 </script>
 <?php include("includes/footer.php"); ?>
 </body>
