@@ -6,19 +6,23 @@
 <div class="content">
 	<div class="container">
 		<div class="row">
-		
 			<?php
 			if (isset($_SESSION['message'])) {
-				
+
 			?>
-				<div class="alert alert-<?= $_SESSION['message_type'] ?> alert-dismissible" >
+				<div class="alert alert-<?= $_SESSION['message_type'] ?> alert-dismissible">
 					<button type="button" class="close" data-dismiss="alert">&times;</button>
 					<?= $_SESSION['message'] ?>
 				</div>
 			<?php unset($_SESSION['message']);
 			} ?>
-			<button class="btn btn-primary" onclick="borraCliente()">Ensayo eliminar</button>
 			<div class="col-md-12">
+				<div class="text-center">
+					<!-- Logo de la web -->
+					<img src="../Imagenes/logo.png" alt="Logo_empresa" class="mx-auto d-block" width="20%" style="margin: -50pt;">
+				</div>
+
+				<h2 class="text-info text-center">Listado de los Clientes</h2>
 				<table class="table table-bordered" id="example">
 					<thead>
 						<tr style="font-size: 13px;">
@@ -62,7 +66,7 @@
 											<path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
 										</svg>
 									</a>
-									
+
 
 									<a href="delete_client.php?id=<?php echo $row['id']; ?>" class="btn btn-danger" onclick="borraCliente()">
 										<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
@@ -98,7 +102,7 @@
 			timer: 3800
 		})
 	}
-	
+
 	$(document).ready(function() {
 		$('#example').DataTable();
 	});

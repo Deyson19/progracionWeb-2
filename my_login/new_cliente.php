@@ -3,20 +3,22 @@
 <?php require_once 'templates/header.php'; ?>
 <div class="content">
     <div class="container">
-    <?php
-               if (isset($_SESSION['message'])) {
-               ?>
-                    <div class="alert alert-<?= $_SESSION['message_type']?> alert-dismissible">
-                         <button type="button" class="close" data-dismiss="alert">&times;</button>
-                         <?= $_SESSION['message']?>
-                    </div>
-               <?php session_unset(); } ?>
+        <?php
+        if (isset($_SESSION['message'])) {
+        ?>
+            <div class="alert alert-<?= $_SESSION['message_type'] ?> alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <?= $_SESSION['message'] ?>
+            </div>
+        <?php session_unset();
+        } ?>
         <div class="col-md-8">
             <div class="card card-body">
+                <h1 class="text-info text-center">Formulario para enviar información</h1>
                 <form action="save_client.php" method="POST">
                     <?php
                     #region Realizar selects
-                    $tipoDni = array_reverse(array("", "Cédula", "Pasaporte", "Cédula extranjería", "Tarjeta de Identidad"));
+                    $tipoDni = array_reverse(array("", "Cédula", "Pasaporte", "Cédula de Extranjería", "Tarjeta de Identidad"));
                     $estadoCivil = array_reverse(array("", "Soltero", "Casado", "Separado"));
                     $cantidadCuotas = [0, 6, 12, 18, 24, 36, 48, 60];
                     $personalData = new DatosPersonales();

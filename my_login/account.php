@@ -15,7 +15,7 @@
      	<div class="container">
      		<div class="col-md-8 col-sm-8 col-xs-12">
      			<?php require_once 'templates/message.php';?>
-     			<h1>Mi cuenta:</h1><br>
+     			<h1 class="text-warning text-center">Mi cuenta:</h1><br>
 				<form action="<?php echo $_SERVER['PHP_SELF']; ?>" id="account-form" method="post" class="form-horizontal myaccount" role="form">
 					<div class="form-group">
 						<span for="inputEmail3" class="col-sm-4 control-span">Nombres</span>
@@ -58,7 +58,7 @@
 					
 					<div class="form-group">
 						<div class="col-sm-offset-4 col-sm-8">
-							<button type="submit" class="btn btn-default" id="submit_btn" data-loading-text="Cambiando contraseña....">Cambiar Contraseña</button>
+							<button type="submit" class="btn btn-info" id="submit_btn" data-loading-text="Cambiando contraseña....">Cambiar Contraseña</button>
 						</div>
 					</div>
 				</form>

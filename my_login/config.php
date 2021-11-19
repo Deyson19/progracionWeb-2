@@ -5,7 +5,7 @@ define( 'BASE_PATH', 'http://localhost/login_seguro/');//Ruta base donde se encu
 define( 'DB_HOST', 'localhost' );//Servidor de la base de datos
 define( 'DB_USERNAME', 'root');//Usuario de la base de datos
 define( 'DB_PASSWORD', '');//Contraseña de la base de datos
-define( 'DB_NAME', 'login_seguro');//Nombre de la base de datos
+define( 'DB_NAME', 'bancomysavings');//Nombre de la base de datos
 
 function __autoload($class)
 {
