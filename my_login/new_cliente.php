@@ -86,8 +86,8 @@
                                 <input class="form-check-input" type="checkbox" name="remember" required> Aceptar el envío de datos.
                             </label>
                         </div>
+                        <input type="submit" class="btn btn-success btn-block" value="Guardar" name="guardar_cliente">
                         <input type="reset" class="btn btn-danger btn-block"></input>
-                        <input type="submit" class="btn btn-success btn-block" name="save_client" value="Save Task">
                 </form>
             </div>
         </div>

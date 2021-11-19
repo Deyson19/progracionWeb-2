@@ -1,3 +1,4 @@
+
 <?php
 include("../data/db.php");
 
@@ -28,9 +29,12 @@ if (isset($_GET['id'])) {
         $query = "UPDATE cliente set dni = '$documento', nombres ='$nombre', apellidos = '$apellidos',numeroCelular = '$numCelular',direccion = '$direccion',ciudad = '$ciudad' WHERE id = $id ";
         mysqli_query($conn, $query);
 
-        $_SESSION['message'] = 'Client Updated Successfully';
-        $_SESSION['message_type'] = 'warning';
-        header("Location: index.php");
+        echo "actualizarCliente()";
+
+        $_SESSION['message'] = 'Se han actualizado los datos de un cliente.';
+        $_SESSION['message_type'] = 'info';
+        header("Location: home.php");
+        
     }
 }
 
@@ -82,3 +86,17 @@ if (isset($_GET['id'])) {
     </div>
 </div>
 <?php include("templates/footer.php") ?>
+
+<script src="../sweetalert2.all.min.js"></script>
+
+<script>
+	function actualizarCliente() {
+		Swal.fire({
+			position: 'center',
+			icon: 'success',
+			title: 'Se ha actualizado un registro',
+			showConfirmButton: true,
+			timer: 3800
+		})
+	}
+</script>

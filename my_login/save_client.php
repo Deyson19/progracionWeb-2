@@ -44,9 +44,7 @@ $cuotasSeleccionadas = ($_POST["cuotas"]);
 $cantidadMeses = $cuotasSeleccionadas;
 
 $cuotaInicial = ($cantidadPrestamo) * 0.3;
-//echo "\n Imprimir el 30% " . "<br>"; //150000 si son 500000 => 70% = 350000
 
-//calcular el 70 %
 $value70 = ($cantidadPrestamo - $cuotaInicial);
 $saldoPrestamo = $value70 + (($value70) * 0.112);
 
@@ -72,14 +70,6 @@ for ($i = 2; $i < $cantidadMeses + 1; $i++) {
     $b = $saldoPrestamo;
     $bFormato = sprintf("%1\$.2f", $b);
     $c = $b - $pago2doMesFormat;
-    print "<tr>";
-    echo "<td>";
-    echo $i . " ";
-    echo "</td>";
-    echo "<td>" . $diaMes . " " . $months[$i] . "</td>"; //fecha de pago
-    echo "<td>   $valorCuota $  </td>"; //valor cuota
-    echo "<td> $bFormato $ </td>"; //subtotal pagado
-    print "</tr>";
 }
 
 
@@ -89,30 +79,29 @@ for ($i = 2; $i < $cantidadMeses + 1; $i++) {
 
 include("../data/db.php");
 
-if (isset($_POST['save_client'])) {
+if (isset($_POST['guardar_cliente'])) {
 
 
     try {
         $query = "INSERT INTO `cliente` (`dni`, `tipoDni`, `nombres`, `apellidos`, `fechaNacimiento`, `numeroCelular`, `direccion`, `deptoResidencia`, `ciudad`, `estadoCivil`, `correo`, `cantidadPrestamo`, `cantidadMeses`, `fechaPago`, `valorCuota`, `subTotal`, `fechaRegistro`) 
-    VALUES ('$dni', '$docAbreviado', '$nombres', '$apellidos', '$fechaNacimiento', '$numCelular', '$direccionResidencia', '$deptoResidencia', '$ciudadResidencia', '$estadoCivil', '$correo', '$cantidadPrestamo', '$cantidadMeses', '$fechaPago', '$valorCuota', '$bFormato', current_timestamp())";
+   VALUES ('$dni', '$docAbreviado', '$nombres', '$apellidos', '$fechaNacimiento', '$numCelular', '$direccionResidencia', '$deptoResidencia', '$ciudadResidencia', '$estadoCivil', '$correo', '$cantidadPrestamo', '$cantidadMeses', '$fechaPago', '$valorCuota', '$subTotal', current_timestamp())";
         $result = mysqli_query($conn, $query);
 
         if (!$result) {
-            die("No se realizó el registro principal");
-            echo "Error" . mysqli_error($conn);
-        }else{
-            echo "Se realizó el registro";
+             die("No se realizó el registro principal");
+             echo "Error" . mysqli_error($conn);
         }
-    } catch (\Throwable $th) {
+        
+   } catch (\Throwable $th) {
         echo $th;
-    }
+   }
+   $conn->close();
 
     $_SESSION['message'] = 'Cliente Guardado';
     $_SESSION['message_type'] = 'success';
 
     header("Location: index.php");
 
-    $conn->close();
 }
 
 
